@@ -1,0 +1,83 @@
+body {
+  background-image: url('https://images.unsplash.com/photo-1457213453084-d386450c6252?crop=entropy&fit=crop&fm=jpg&h=600&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1275');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+ul {
+  font-size: 120%;
+  text-align: center;
+}
+
+#groups {
+  font-size: 120%;
+  text-align: center;
+}
+
+
+header {
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Ubuntu', sans-serif;
+}
+h2 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+input {
+  text-align: center;
+  
+}
+
+#buttonmove {
+  margin-left: 20%;
+}
+
+#students {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#cities {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#groups {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#input_numinpair {
+  padding: 0.5em;
+  text-align: center;
+}
+
+#input {
+  padding: 0.5em;
+}
+
+.row {
+  background-color: rgb(200, 200, 200);
+  opacity: 0.9;
+}
+
+.map_container{
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+}
+.map_container .map{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}

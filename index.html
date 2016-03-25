@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Groupr.io</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+	<link rel='stylesheet' type='text/css' href='main1.css'>
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class='container-fluid'>
+	<header align='center'>Groupr.io</header>
+	
+	<div id = "top" align='center'>
+		<h2>Enter name and city</h2>
+		<div id = 'input'>
+			<input type = 'text' id = 'nameInput' placeholder = 'name' required/>
+			<input type = 'text' id = 'cityInput' placeholder = 'city' required/>
+		</div>
+		<button class ='btn btn-primary' id = 'submit'>Add to List</button>
+		<button class = 'btn ' id = 'oneDelete'>Delete Last Entry</button>
+		<button class ='btn btn-danger' id = 'clear'>Clear List</button>
+		<button class ='btn btn-primary' id = 'remotePrep'>Remote Prep</button>
+	</div>
+
+	<div class="row">
+  	<div class="col-md-2">
+  		<ul id='students'>
+		</ul>
+	</div>
+	<div class="col-md-2">
+		<ul id='cities'>
+		</ul>
+  	</div>
+  	<div class="col-md-3">
+  		<div id = 'input_numinpair'>
+			<input type = 'number' placeholder = 'number' id = 'num'/>
+		</div>
+		<div id= "buttonmove">
+		<button class = 'btn btn-primary' id = 'random'>Randomize</button>
+		<button class = 'btn btn-primary' id = 'mybtn'>Map View</button>
+		</div>
+		<div id = 'pairs'>
+		</div>
+		<div id = 'groups'>
+		</div>
+  	</div>
+  	<div class="col-md-5">
+  		<div class="map_container">
+  		<div id="map" class="map"></div>
+  		</div>
+	</div>
+	</div>
+</div>
+<footer>&copy; 2016 Column & Cape</footer>
+<script src='groupr.js'></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAlCKeclAtSWlHx8zIwZJdHf1f8YLNOVNI"></script>
+<script>
+var map;
+function initialize() {
+  mapProp = {
+    center:new google.maps.LatLng(24.264493,-75.102539),
+    zoom:3,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById("map"),mapProp);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+$("#mybtn").click(function(){
+
+    for (var i = 0; i < usersArray.length; i++) {
+    	var myName = usersArray[i].name;
+    	var address = usersArray[i].city
+    	var lat, ln;
+    	codeLatLng(address, i);
+		}
+});
+
+// geocoder function
+function codeLatLng(address, count) {
+		var geocoder =  new google.maps.Geocoder();
+   		geocoder.geocode( { 'address': address}, function(results, status) {
+    		var lat = results[0].geometry.location.lat();
+    		var ln = results[0].geometry.location.lng()
+    		var myLatLng = {lat: lat, lng: ln};
+    		printMarkerWithTitle(myLatLng, count)
+  		});
+}
+
+// print marker with title
+function printMarkerWithTitle(myLatLng, count) {
+			var name = usersArray[count].name;
+			console.log(name);
+			addMarker(myLatLng, name);
+}
+
+//Function for adding a marker to the page.
+    function addMarker(location, title) {
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(location),
+            map : map,
+            title: title
+        });
+    }
+
+</script>
+</body>
+</html>
