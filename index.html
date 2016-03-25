@@ -61,6 +61,7 @@
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAlCKeclAtSWlHx8zIwZJdHf1f8YLNOVNI"></script>
 <script>
 var map;
+// initializes google map on page
 function initialize() {
   mapProp = {
     center:new google.maps.LatLng(24.264493,-75.102539),
@@ -88,7 +89,7 @@ function codeLatLng(address, count) {
     		var lat = results[0].geometry.location.lat();
     		var ln = results[0].geometry.location.lng()
     		var myLatLng = {lat: lat, lng: ln};
-    		printMarkerWithTitle(myLatLng, count)
+    		printMarkerWithTitle(myLatLng, count)	//passes geocode data to function
   		});
 }
 
